@@ -43,14 +43,14 @@ for index, row in df.iterrows():
     webbrowser.open(link)
 
     print(f"Aguardando carregamento do WhatsApp para {nome}...")
-    time.sleep(15)  # Aguarda 10 segundos para carregar o WhatsApp Web
+    time.sleep(6)  # Aguarda 10 segundos para carregar o WhatsApp Web
 
     # Pressiona Enter para enviar a mensagem
     pyautogui.press("enter")
 
     print(f"Mensagem enviada para {nome} ({telefone})")
 
-    time.sleep(10)  # Espera um pouco antes de passar para o próximo
+    time.sleep(3)  # Espera um pouco antes de passar para o próximo
     keyboard.press_and_release('ctrl+w')  # Fecha a aba atual
 
 print("✅ Todas as mensagens foram enviadas com sucesso!")
