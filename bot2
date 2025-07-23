@@ -1,0 +1,47 @@
+import pandas as pd
+import pywhatkit
+import time
+
+# pega os dados na panilha
+df = pd.read_excel("C:\\Users\\smlima\\AppData\\Local\\Microsoft\\WindowsApps\\Contatos_dependentes.xlsx")
+
+# caminho img
+imagem = "C:\\Users\\smlima\\AppData\\Local\\Microsoft\\WindowsApps\\imagemdependentes.jfif"
+
+# msg
+mensagem_base = """Olá, {nome}. Estamos preparando uma homenagem especial para celebrar o Dia dos Pais, e a sua participação é fundamental!
+
+Para isso, pedimos que você:
+* Envie uma foto sua com seu(s) filho(s);
+* Complete a frase "Ser pai é...";
+* Informe seu nome, o nome do(s) seu(s) filho(s) e a unidade Bundy.
+
+📅 Nos envie as informações até 31/07, pelo google forms.
+
+É só clicar no link abaixo:
+https://forms.gle/1y4Xqkm9RvvQEPnC9
+
+Aguardamos sua resposta! 🥰"""
+
+# Loop p envio
+for index, row in df.iterrows():
+    nome = row["Nome"]
+    telefone = str(row["Telefone"])
+
+    mensagem = mensagem_base.format(nome=nome)
+
+    try:
+        pywhatkit.sendwhats_image(
+            receiver=f"+{telefone}",
+            img_path=imagem,
+            caption=mensagem,
+            wait_time=10,
+            tab_close=True,
+            close_time=3
+        )
+
+        print(f"✅ Imagem enviada para {nome} ({telefone})")
+        time.sleep(25)  # Aguarda antes do próximo
+
+    except Exception as e:
+        print(f"❌ Erro com {nome} ({telefone}): {e}")
