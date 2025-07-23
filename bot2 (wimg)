@@ -35,13 +35,13 @@ for index, row in df.iterrows():
             receiver=f"+{telefone}",
             img_path=imagem,
             caption=mensagem,
-            wait_time=10,
+            wait_time=150,
             tab_close=True,
-            close_time=3
+            close_time=1
         )
 
         print(f"✅ Imagem enviada para {nome} ({telefone})")
-        time.sleep(25)  # Aguarda antes do próximo
+        time.sleep(1)  # Aguarda antes do próximo
 
     except Exception as e:
         print(f"❌ Erro com {nome} ({telefone}): {e}")
