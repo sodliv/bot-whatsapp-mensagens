@@ -1,0 +1,5 @@
+import pyautogui
+
+while True:
+    x, y = pyautogui.position()  # pega as coordenadas atuais do mouse
+    print(f"Posição atual do mouse: ({x}, {y})")
