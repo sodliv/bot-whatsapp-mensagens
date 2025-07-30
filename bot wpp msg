@@ -6,14 +6,14 @@ import keyboard
 import urllib.parse
 
 # Carrega os dados do Excel
-df = pd.read_excel(r'C:\\Users\\smlima\\AppData\\Local\\Microsoft\\WindowsApps\\Contatos_dependentes.xlsx')
+df = pd.read_excel(r'C:\\Users\\smlima\\Desktop\\Contatos_dependentes - Copia.xlsx')
 
 print("Iniciando envio de mensagens...")
 
 # Mensagem base com personalização
-mensagem_base = """Olá, {nome}. Estamos preparando uma homenagem especial para celebrar o Dia dos Pais, e a sua participação é fundamental!
+mensagem_base = """Olá, {nome}. O prazo para envio da foto está encerrando!
 
-Para isso, pedimos que você:
+Para isso, pedimos, por gentileza, que você:
 * Envie uma foto sua com seu(s) filho(s);
 * Complete a frase "Ser pai é...";
 * Informe seu nome, o nome do(s) seu(s) filho(s) e a unidade Bundy.
@@ -23,7 +23,7 @@ Para isso, pedimos que você:
 É só clicar no link abaixo:
 https://forms.gle/1y4Xqkm9RvvQEPnC9
 
-Aguardamos sua resposta! 🥰"""
+Aguardamos sua resposta para tornar seu dia dos pais ainda mais especial! 🥰"""
 
 # Loop por cada contato
 for index, row in df.iterrows():
@@ -43,14 +43,14 @@ for index, row in df.iterrows():
     webbrowser.open(link)
 
     print(f"Aguardando carregamento do WhatsApp para {nome}...")
-    time.sleep(6)  # Aguarda 10 segundos para carregar o WhatsApp Web
+    time.sleep(10)
 
     # Pressiona Enter para enviar a mensagem
     pyautogui.press("enter")
 
     print(f"Mensagem enviada para {nome} ({telefone})")
 
-    time.sleep(3)  # Espera um pouco antes de passar para o próximo
+    time.sleep(5)  # Espera um pouco antes de passar para o próximo
     keyboard.press_and_release('ctrl+w')  # Fecha a aba atual
 
 print("✅ Todas as mensagens foram enviadas com sucesso!")
